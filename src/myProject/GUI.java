@@ -202,6 +202,178 @@ public class GUI extends JFrame {
 
     }
 
+    /**
+     * This method adds 100 buttons to tableroPosicion for the first time, when the array is created
+     */
+    private void pintarTableroPosicion()
+    {
+        if (interfaz == 0) {
+            GridBagConstraints constrainsPosicion = new GridBagConstraints();
+
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    tableroPosicionU[i][j] = new JButton();
+                    tableroPosicionU[i][j].setBackground(new Color(5, 182, 198));
+                    tableroPosicionU[i][j].setPreferredSize(new Dimension(46, 46));
+                    constrainsPosicion.gridx = i;
+                    constrainsPosicion.gridy = j;
+                    constrainsPosicion.gridwidth = 1;
+                    constrainsPosicion.fill = GridBagConstraints.NONE;
+                    constrainsPosicion.anchor = GridBagConstraints.CENTER;
+                    panelIzquierdo.add(tableroPosicionU[i][j], constrainsPosicion);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Este metodo crea el territorio vacio del enemigo
+     */
+    private void pintarTableroEnemigo(){
+        tableroEnemigo= new JPanel(new GridBagLayout());
+        tableroEnemigo.setPreferredSize(new Dimension(480, 500));
+
+        if (interfaz == 0) {
+            GridBagConstraints constrainsPosicion = new GridBagConstraints();
+
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    tableroPosicionEnemigo[i][j] = new JButton();
+                    tableroPosicionEnemigo[i][j].setBackground(new Color(5, 182, 198));
+                    tableroPosicionEnemigo[i][j].setPreferredSize(new Dimension(46, 46));
+
+                    constrainsPosicion.gridx = i;
+                    constrainsPosicion.gridy = j;
+                    constrainsPosicion.gridwidth = 1;
+                    constrainsPosicion.fill = GridBagConstraints.NONE;
+                    constrainsPosicion.anchor = GridBagConstraints.CENTER;
+                    tableroEnemigo.add(tableroPosicionEnemigo[i][j], constrainsPosicion);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Este método agrega los componentes necesarios para crear la flota
+     */
+    private void opcionesFlota(){
+
+        elegirFragata= new JButton();
+        elegirFragata.addActionListener(escucha);
+        elegirFragata.setPreferredSize(new Dimension(110, 80));
+        img =
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/misBarcos/fragata" +
+                        ".png")));
+        elegirFragata.setIcon(new ImageIcon(img.getImage().getScaledInstance(110, 80, Image.SCALE_SMOOTH)));
+        elegirFragata.setBorderPainted(false);
+        elegirFragata.setFocusPainted(false);
+        elegirFragata.setContentAreaFilled(false);
+        constrains.gridx = 0;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(elegirFragata, constrains);
+
+        labelFragata= new JLabel("Fragata");
+        labelFragata.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        labelFragata.setForeground(Color.WHITE);
+        constrains.gridx = 0;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(labelFragata, constrains);
+
+        elegirDestructor = new JButton();
+        elegirDestructor.addActionListener(escucha);
+        elegirDestructor.setPreferredSize(new Dimension(110, 80));
+        img =
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/misBarcos" +
+                        "/destructor.png")));
+        elegirDestructor.setIcon(new ImageIcon(img.getImage().getScaledInstance(110, 80, Image.SCALE_SMOOTH)));
+        elegirDestructor.setBorderPainted(false);
+        elegirDestructor.setFocusPainted(false);
+        elegirDestructor.setContentAreaFilled(false);
+        constrains.gridx = 1;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(elegirDestructor, constrains);
+
+        labelDestructor= new JLabel("Destructor");
+        labelDestructor.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        labelDestructor.setForeground(Color.WHITE);
+        constrains.gridx = 1;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(labelDestructor, constrains);
+
+        elegirPortaavion= new JButton();
+        elegirPortaavion.addActionListener(escucha);
+        elegirPortaavion.setPreferredSize(new Dimension(110, 80));
+        img =
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/misBarcos" +
+                        "/portaaviones.png")));
+        elegirPortaavion.setIcon(new ImageIcon(img.getImage().getScaledInstance(110, 80, Image.SCALE_SMOOTH)));
+        elegirPortaavion.setBorderPainted(false);
+        elegirPortaavion.setFocusPainted(false);
+        elegirPortaavion.setContentAreaFilled(false);
+        constrains.gridx = 2;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(elegirPortaavion, constrains);
+
+        labelPortaavion= new JLabel("Portaavión");
+        labelPortaavion.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        labelPortaavion.setForeground(Color.WHITE);
+        constrains.gridx = 2;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(labelPortaavion, constrains);
+
+        elegirSubmarino= new JButton();
+        elegirSubmarino.addActionListener(escucha);
+        elegirSubmarino.setPreferredSize(new Dimension(110, 80));
+        img =
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/misBarcos" +
+                        "/submarino.png")));
+        elegirSubmarino.setIcon(new ImageIcon(img.getImage().getScaledInstance(110, 80, Image.SCALE_SMOOTH)));
+        elegirSubmarino.setBorderPainted(false);
+        elegirSubmarino.setFocusPainted(false);
+        elegirSubmarino.setContentAreaFilled(false);
+        constrains.gridx = 3;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(elegirSubmarino, constrains);
+
+        labelSubmarino= new JLabel("Submarino");
+        labelSubmarino.setFont(new Font(Font.SERIF,Font.BOLD,15));
+        labelSubmarino.setForeground(Color.WHITE);
+        constrains.gridx = 3;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelDerecho.add(labelSubmarino, constrains);
+
+        vehiculo = new JButton[]{elegirPortaavion,elegirSubmarino,elegirDestructor,elegirFragata};
+
+        revalidate();
+        repaint();
+
+    }
 
     /**
      * Constructor of GUI class
