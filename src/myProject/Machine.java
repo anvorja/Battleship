@@ -6,7 +6,7 @@ import java.util.Random;
  * This class is designed in order to generate the information for player "machine"
  * @author Carlos Andrés Borja - borja.carlos@correounivalle.edu.co
  *         Deisy Catalina Melo - deisy.melo@correounivalle.edu.co
- * @version v
+ * @version v.1.0.3 date: 26/01/2023
  */
 public class Machine {
 
@@ -128,5 +128,60 @@ public class Machine {
         }
     }
 
+    /**
+     * Method that searches for a target close to the touched part of the ship
+     * @return objetivo boolean - if a new target was selected
+     */
+    private boolean objetivoEncontrado() {
+        boolean goal=false;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (tableroInformacionMachine[i][j].equals("tocado")&&!goal){
+                    if(i>0&&tableroInformacionMachine[i-1][j].equals("")){
+                        disparoX=i-1;
+                        disparoY=j;
+                        goal=true;
+                    }
+                    else if(i>1&&tableroInformacionMachine[i-2][j].equals("")&&tableroInformacionMachine[i-1][j].equals("tocado")){
+                        disparoX=i-2;
+                        disparoY=j;
+                        goal=true;
+                    }
+                    else if(i<9&&tableroInformacionMachine[i+1][j].equals("")){
+                        disparoX=i+1;
+                        disparoY=j;
+                        goal=true;
+                    }
+                    else if(i<8&&tableroInformacionMachine[i+2][j].equals("")&&tableroInformacionMachine[i+1][j].equals("tocado")){
+                        disparoX=i+2;
+                        disparoY=j;
+                        goal=true;
+                    }
+
+                    if(j>0&&tableroInformacionMachine[i][j-1].equals("")){
+                        disparoX=i;
+                        disparoY=j-1;
+                        goal=true;
+                    }
+                    else if(j>1&&tableroInformacionMachine[i][j-2].equals("")&&tableroInformacionMachine[i][j-1].equals("tocado")){
+                        disparoX=i;
+                        disparoY=j-2;
+                        goal=true;
+                    }
+                    else if(j<9&&tableroInformacionMachine[i][j+1].equals("")){
+                        disparoX=i;
+                        disparoY=j+1;
+                        goal=true;
+                    }
+                    else if(j<8&&tableroInformacionMachine[i][j+2].equals("")&&tableroInformacionMachine[i][j+1].equals("tocado")){
+                        disparoX=i;
+                        disparoY=j+2;
+                        goal=true;
+                    }
+                }
+            }
+        }
+        return goal;
+    }
 
 }
