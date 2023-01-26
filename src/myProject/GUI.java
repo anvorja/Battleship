@@ -608,7 +608,38 @@ public class GUI extends JFrame {
     }
 
 
+    public void pasarTurno() {
+        modelClass.dispararMaquina();
+        pintarFlota(modelClass.getTableroPosicionUsuario(), tableroPosicionU);
+    }
 
+    /**
+     * adds the listener to the 100 buttons
+     *
+     * @param matrix where the buttons are
+     */
+    private void addEscucha(JButton[][] matrix) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                matrix[i][j].setBackground(new Color(30, 124, 120));
+                matrix[i][j].addActionListener(escucha);
+            }
+        }
+    }
+
+    /**
+     * remove the listener to the 100 buttons
+     *
+     * @param matrix where the buttons are
+     */
+    private void removeEscucha(JButton[][] matrix) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                matrix[i][j].setBackground(new Color(5, 182, 198));
+                matrix[i][j].removeActionListener(escucha);
+            }
+        }
+    }
 
 
     /**
