@@ -43,7 +43,7 @@ public class GUI extends JFrame {
         tableroPosicionM = new JButton[10][10];
         posicionFlota = 0;
         nombreFlota = new String[]{"Portaaviones", "Submarinos", "Destructores", "Fragatas"};
-        //cantidadFlota = new int[]{1, 2, 3, 4};
+
 
         this.setContentPane(new Canvas()); // to Paint the background image of the Frame
         initGUI();
@@ -67,7 +67,6 @@ public class GUI extends JFrame {
         modelClass = new ModelClass();
 
         escucha = new Escucha();
-
 
         salir = new JButton();
         salir.addActionListener(escucha);
