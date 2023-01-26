@@ -642,6 +642,7 @@ public class GUI extends JFrame {
     }
 
 
+
     /**
      * Main process of the Java program
      *
@@ -702,6 +703,8 @@ public class GUI extends JFrame {
                 JOptionPane.showMessageDialog(null, tableroEnemigo, "TABLERO DE POSICIÓN DEL ENEMIGO",
                         JOptionPane.INFORMATION_MESSAGE);
             }
+
+            }
             if (e.getSource() == ayuda)
             {
                 //manal de instrucciones
@@ -715,6 +718,7 @@ public class GUI extends JFrame {
 
             }
         }
+
 
     }
 }
