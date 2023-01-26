@@ -140,6 +140,69 @@ public class GUI extends JFrame {
 
 
     }
+
+    /**
+     *Este método crea los paneles necesarios para los tableros del juego
+     */
+    private void pintarEntrada(){
+
+        ayuda = new JButton();
+        ayuda.addActionListener(escucha);
+        ayuda.setPreferredSize(new Dimension(100, 80));
+        img = new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/botones/help.png")));
+        ayuda.setIcon(new ImageIcon(img.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+        ayuda.setBorderPainted(false);
+        ayuda.setFocusPainted(false);
+        ayuda.setContentAreaFilled(false);
+        constrains.gridx = 0;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.LINE_START;
+        this.add(ayuda, constrains);
+
+        img= new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/creaFlota.png")));
+        img= new ImageIcon(img.getImage().getScaledInstance(500,60,Image.SCALE_SMOOTH));
+        labelCreaFlota= new JLabel(img);
+        constrains.gridx = 0;
+        constrains.gridy = 0;
+        constrains.gridwidth = 2;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        add(labelCreaFlota, constrains);
+
+        panelIzquierdo = new JPanel(new GridBagLayout());
+        panelIzquierdo.setPreferredSize(new Dimension(480, 500));
+        panelIzquierdo.setOpaque(false);
+        constrains.gridx = 0;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.gridheight= 2;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        add(panelIzquierdo, constrains);
+        pintarTableroPosicion();
+        pintarTableroEnemigo();
+
+        panelDerecho = new JPanel(new GridBagLayout());
+        panelDerecho.setPreferredSize(new Dimension(480, 220));
+        //panelDerecho.setBackground(new Color(0,0,0,150));
+        panelDerecho.setOpaque(false);
+        constrains.gridx = 1;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.gridheight= 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        add(panelDerecho, constrains);
+
+        revalidate();
+        repaint();
+        opcionesFlota();
+
+    }
+
+
     /**
      * Constructor of GUI class
      */
