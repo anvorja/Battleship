@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Carlos Andrés Borja - borja.carlos@correounivalle.edu.co
  *         Deisy Catalina Melo - deisy.melo@correounivalle.edu.co
- * @version v
+ * @version v.1.0.2 date: 26/01/2023
  */
 
 public class GUI extends JFrame {

@@ -4,7 +4,7 @@ package myProject;
  * This class is designed in order to apply the game rules
  * @author Carlos Andrés Borja - borja.carlos@correounivalle.edu.co
  *         Deisy Catalina Melo - deisy.melo@correounivalle.edu.co
- * @version v
+ * @version v.1.0.4 date: 26/01/2023
  */
 public class ModelClass
 {
