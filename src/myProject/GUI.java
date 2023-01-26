@@ -548,7 +548,64 @@ public class GUI extends JFrame {
         repaint();
     }
 
+    /**
+     * This method adds 100 buttons to tableroPrincipal for the first time, when the tableroPosicion is created
+     * Enemy zone
+     */
+    private void pintarTableroPrincipal() {
+        panelDerecho.setPreferredSize(new Dimension(480,500));
+        constrains.gridx = 1;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.gridheight= 2;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        this.add(panelDerecho,constrains);
 
+        GridBagConstraints constrainsPosicionDerecha = new GridBagConstraints();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                tableroPrincipalU[i][j] = new JButton();
+                tableroPrincipalU[i][j].setBackground(new Color(83, 191, 227));
+                tableroPrincipalU[i][j].setPreferredSize(new Dimension(46, 46));
+                constrainsPosicionDerecha.gridx = i;
+                constrainsPosicionDerecha.gridy = j;
+                constrainsPosicionDerecha.gridwidth = 1;
+                constrainsPosicionDerecha.fill = GridBagConstraints.NONE;
+                constrainsPosicionDerecha.anchor = GridBagConstraints.CENTER;
+                panelDerecho.add(tableroPrincipalU[i][j], constrainsPosicionDerecha);
+            }
+        }
+        revalidate();
+        repaint();
+    }
+
+    /**
+     * Este método crea el componente JButton para acceder a la vista del territorio enemigo
+     */
+
+    private void opcionTerritorioEnemigo(){
+        remove(labelInicioBatalla); //remove text indications
+        revalidate();
+        repaint();
+
+        verTerritorioEnemigo = new JButton();
+        verTerritorioEnemigo.addActionListener(escucha);
+        verTerritorioEnemigo.setPreferredSize(new Dimension(100, 80));
+        img = new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/botones/enemy1.png")));
+        verTerritorioEnemigo.setIcon(new ImageIcon(img.getImage().getScaledInstance(60, 70, Image.SCALE_SMOOTH)));
+        verTerritorioEnemigo.setBorderPainted(false);
+        verTerritorioEnemigo.setFocusPainted(false);
+        verTerritorioEnemigo.setContentAreaFilled(false);
+        constrains.gridx = 1;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        add(verTerritorioEnemigo, constrains);
+
+    }
 
 
 
