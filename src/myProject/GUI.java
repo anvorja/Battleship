@@ -140,6 +140,111 @@ public class GUI extends JFrame {
 
 
     }
+    /**
+     * Constructor of GUI class
+     */
+    public GUI() {
+        interfaz = 0;
+        tableroPosicionU = new JButton[10][10];
+        tableroPrincipalU = new JButton[10][10];
+        tableroPosicionEnemigo = new JButton[10][10];
+        casillasFlota = 0;
+        nombreFlota = new String[]{"portaaviones", "submarino", "destructor", "fragata"};
+        cantidadFlota = new int[]{1, 2, 3, 4};
+
+        this.setContentPane(new Canvas()); // to Paint the background image of the Frame
+        initGUI();
+        // Default JFrame configuration
+        this.setUndecorated(true);
+        this.pack();
+        this.setResizable(true);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+    }
+
+    /**
+     * This method is used to set up the default JComponent Configuration,
+     * create Listener and control Objects used for the GUI class
+     */
+    private void initGUI() {
+        //Set up JFrame Container's Layout
+        this.getContentPane().setLayout(new GridBagLayout());
+        constrains = new GridBagConstraints();
+        modelClass = new ModelClass();
+        escucha = new Escucha();
+        vacio=0;
+
+        salir = new JButton();
+        salir.addActionListener(escucha);
+        salir.setPreferredSize(new Dimension(100, 80));
+        img = new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/botones/exit.png")));
+        salir.setIcon(new ImageIcon(img.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH)));
+        salir.setBorderPainted(false);
+        salir.setFocusPainted(false);
+        salir.setContentAreaFilled(false);
+        constrains.gridx = 1;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.LINE_END;
+        this.add(salir, constrains);
+
+        panelInicio = new JPanel(new GridBagLayout());
+        panelInicio.setPreferredSize(new Dimension(960, 500));
+        panelInicio.setOpaque(false);
+        constrains.gridx = 0;
+        constrains.gridy = 1;
+        constrains.gridwidth = 2;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        this.add(panelInicio, constrains);
+
+        img= new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/logoGame.png")));
+        img= new ImageIcon(img.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH));
+        logo= new JLabel(img);
+        constrains.gridx = 0;
+        constrains.gridy = 0;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.PAGE_START;
+        panelInicio.add(logo, constrains);
+
+        iniciar= new JButton();
+        iniciar.addActionListener(escucha);
+        iniciar.setPreferredSize(new Dimension(300, 80));
+        img = new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/botones/botonIniciar" +
+                ".png")));
+        iniciar.setIcon(new ImageIcon(img.getImage().getScaledInstance(300, 60, Image.SCALE_SMOOTH)));
+        iniciar.setBorderPainted(false);
+        iniciar.setContentAreaFilled(false);
+        constrains.gridx = 0;
+        constrains.gridy = 1;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelInicio.add(iniciar, constrains);
+
+        instrucciones= new JButton();
+        instrucciones.addActionListener(escucha);
+        instrucciones.setPreferredSize(new Dimension(300, 70));
+        img =
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/myProject/resources/botones" +
+                        "/botonInstrucciones.png")));
+        instrucciones.setIcon(new ImageIcon(img.getImage().getScaledInstance(300, 60, Image.SCALE_SMOOTH)));
+        instrucciones.setBorderPainted(false);
+        instrucciones.setContentAreaFilled(false);
+        constrains.gridx = 0;
+        constrains.gridy = 2;
+        constrains.gridwidth = 1;
+        constrains.fill = GridBagConstraints.NONE;
+        constrains.anchor = GridBagConstraints.CENTER;
+        panelInicio.add(instrucciones, constrains);
+
+        revalidate();
+        repaint();
+
+
+    }
 
     /**
      *Este método crea los paneles necesarios para los tableros del juego

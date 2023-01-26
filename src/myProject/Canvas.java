@@ -16,7 +16,6 @@ public class Canvas  extends JPanel
     /**
      * Constructor of class Canvas
      * */
-
     public Canvas()
     {
         imagenFrame =
@@ -28,7 +27,6 @@ public class Canvas  extends JPanel
      * */
     public void paintComponent(Graphics g) {
 
-        imagenFrame = new ImageIcon(imagenFrame.getImage().getScaledInstance(960, 581, Image.SCALE_SMOOTH));
         g.drawImage(imagenFrame.getImage(), 0, 0, getWidth(), getHeight(), null);
         setOpaque(false);
         super.paintComponent(g);
