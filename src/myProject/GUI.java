@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Carlos Andrés Borja - borja.carlos@correounivalle.edu.co
  *         Deisy Catalina Melo - deisy.melo@correounivalle.edu.co
- * @version v.1.0.2 date: 20/03/2022
+ * @version v
  */
 
 public class GUI extends JFrame {
@@ -702,7 +702,87 @@ public class GUI extends JFrame {
             if(e.getSource()== verTerritorioEnemigo){
                 JOptionPane.showMessageDialog(null, tableroEnemigo, "TABLERO DE POSICIÓN DEL ENEMIGO",
                         JOptionPane.INFORMATION_MESSAGE);
-            }
+            }else{
+                //Interfaz: 0 para elegir el tipo de vehiculo, 1 para agregar el vehiculo a la flota, 2 para iniciar juego
+                switch (interfaz){
+                    case 0 ->{
+                        //revisar cuál de los vehículos fue seleccionado y aplicarle alineación a esa flota seleccionada
+                        for (int m = 0; m < 4; m++)
+                        {
+                            if (vehiculo[m] == e.getSource())
+                            {
+                                alineacionFlota(); //elige la orientación
+                                tipoFlota = nombreFlota[m];
+                                break;
+                            }
+                        }
+                        if (e.getSource() == horizontal) {
+                            orientacion = "horizontal";
+                            panelDerecho2.removeAll();
+                            revalidate();
+                            repaint();
+                            textoSeleccionarCasilla();
+                        }
+                        if (e.getSource() == vertical) {
+                            orientacion = "vertical";
+                            panelDerecho2.removeAll();
+                            textoSeleccionarCasilla();
+                            revalidate();
+                            repaint();
+
+                        }
+                    }
+                    case 1 ->{
+                        //check which of the 100 buttons was clicked
+                        for (int i = 0; i < 10; i++) {
+                            for (int j = 0; j < 10; j++) {
+                                if (tableroPosicionU[i][j] == e.getSource()) {
+                                    //once found, it is checked to see if it can be added to the underlying positions
+                                    if (modelClass.crearTerritorioDelUsuario(i, j, orientacion, tipoFlota)) {
+                                        pintarFlota(modelClass.getTableroPosicionUsuario(),tableroPosicionU);
+                                        eliminarOpcionFlota();
+                                        panelDerecho2.removeAll();
+                                        removeEscucha(tableroPosicionU);
+                                        remove(panelDerecho2);
+
+                                        interfaz=0;
+
+                                        elegirPortaavion.addActionListener(escucha);
+                                        elegirSubmarino.addActionListener(escucha);
+                                        elegirDestructor.addActionListener(escucha);
+                                        elegirFragata.addActionListener(escucha);
+
+                                        revalidate();
+                                        repaint();
+
+                                    } else{
+                                        JOptionPane.showMessageDialog(panelIzquierdo,
+                                                "No se pudo posicionar la flota porque " + modelClass.getError(), "Error", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    case 2 ->{
+
+                        setDisparo(e);
+
+                        if(modelClass.hayGanador()){
+                            int respuesta;
+                            if(modelClass.getWinner().equals("maquina") ){
+                                respuesta =JOptionPane.showConfirmDialog(panelIzquierdo,"Perdiste, el enemigo ha ganado",
+                                        "Termino el juego",JOptionPane.DEFAULT_OPTION);
+                            }else{
+                                respuesta= JOptionPane.showConfirmDialog(panelDerecho,"Ganaste!!!","Terminó el juego",
+                                        JOptionPane.DEFAULT_OPTION);
+                            }
+                            if(respuesta==0){
+                                System.exit(0);
+                            }
+                        }
+                    }
+                }
 
             }
             if (e.getSource() == ayuda)
@@ -718,7 +798,26 @@ public class GUI extends JFrame {
 
             }
         }
-
+        /**
+         * Sets the position where the shot was made by the user
+         * @param disparo
+         */
+        private void setDisparo(ActionEvent disparo){
+            for (int i = 0; i < 10 ; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if(disparo.getSource() == tableroPrincipalU[i][j]){
+                        if(modelClass.setTableroInformacionPrincipalUsuario(i,j)){
+                            pintarFlota(modelClass.getTableroInformacionPrincipalU(),tableroPrincipalU);
+                            pintarFlota(modelClass.getTableroPosicionMaquina(),tableroPosicionEnemigo);
+                            pasarTurno();
+                        }else{
+                            pintarFlota(modelClass.getTableroInformacionPrincipalU(),tableroPrincipalU);
+                            pintarFlota(modelClass.getTableroPosicionMaquina(),tableroPosicionEnemigo);
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }

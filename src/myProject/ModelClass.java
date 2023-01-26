@@ -4,7 +4,7 @@ package myProject;
  * This class is designed in order to apply the game rules
  * @author Carlos Andrés Borja - borja.carlos@correounivalle.edu.co
  *         Deisy Catalina Melo - deisy.melo@correounivalle.edu.co
- * @version v.1.0.4 date: 21/03/2022
+ * @version v
  */
 public class ModelClass
 {
@@ -384,5 +384,45 @@ public class ModelClass
         }
     }
 
+    /**
+     * to get the matrix where the user's trigger destination is saved (agua,
+     * tocado, hundido)
+     *
+     * @return matrix tableroInfPrincipalU
+     */
+    public String[][] getTableroInformacionPrincipalU() {
+        return tableroInformacionPrincipalU;
+    }
+
+
+    /**
+     * defines is there player who sank all the rival ships
+     *
+     * @return if there is a winner or not
+     */
+    public Boolean hayGanador() {
+        boolean hayGanador_ = false;
+        if (contadorUsuario == 20) {
+            hayGanador_ = true;
+        } else {
+            if (contadorMaquina == 20) {
+                hayGanador_ = true;
+            }
+        }
+        return hayGanador_;
+    }
+
+    /**
+     * Method that define the winner
+     * @return winner
+     */
+    public String getWinner() {
+        if (contadorMaquina == 20) {
+            winner = "maquina";
+        } else {
+            winner = "usuario";
+        }
+        return winner;
+    }
 
 }
