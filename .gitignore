@@ -3,6 +3,7 @@
 *.iml
 
 .idea
+idea
 
 # Archivos compilados de Java
 *.class
