@@ -9,11 +9,9 @@ import java.util.Objects;
 
 
 /**
- * This class is designed in order to view ModelClass
- *
- * @author Carlos Andrés Borja - borja.carlos@correounivalle.edu.co
- *         Deisy Catalina Melo - deisy.melo@correounivalle.edu.co
- * @version v.1.0.2 date: 26/01/2023
+ * @author borja.carlos@correounivalle.edu.co
+ *         deisy.melo@correounivalle.edu.co
+ * @version v.2.0.0 date: 31/12/2024
  */
 
 public class GUI extends JFrame {
