@@ -462,8 +462,8 @@ public class GUI extends JFrame {
 
     /**
      * This method has the purpose of modifying the images displayed by the buttons
-     * @param matrix
-     * @param tableroPosicion
+     * @param matrix A 2D array of strings representing the positions of the ships on the board.
+     * @param tableroPosicion A 2D array of JButtons representing the positions on the board.
      */
     private void pintarFlota(String[][] matrix, JButton[][] tableroPosicion) {
         for (int i = 0; i < 10; i++) {
@@ -825,35 +825,3 @@ public class GUI extends JFrame {
 
     }
 }
-
-//package myProject;
-//
-//import myProject.components.BoardComponent;
-//import myProject.components.FleetComponent;
-//
-//import javax.swing.*;
-//import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import java.util.Objects;
-//
-//public class GUI extends JFrame {
-//    private static final int WIDTH = 960;
-//    private static final int HEIGHT = 500;
-//
-//    private final BoardComponent boardComponent;
-//    private final FleetComponent fleetComponent;
-//    private final ModelClass modelClass;
-//    private final GameListener gameListener;
-//
-//    private JPanel panelInicio, panelIzquierdo, panelDerecho, panelDerecho2, tableroEnemigo;
-//    private JButton[][] tableroPosicionU, tableroPrincipalU, tableroPosicionEnemigo;
-//    private JButton salir, ayuda, verTerritorioEnemigo;
-//    private JButton horizontal, vertical, iniciar, instrucciones;
-//    private JLabel labelCreaFlota, labelInicioBatalla, labelInstrucciones, labelAux;
-//    private int[] cantidadFlota;
-//    private String[] nombreFlota;
-//    private String orientacion, tipoFlota;
-//    private int gameStatus = 0;
-//    private int completedShipCount = 0;
-//    private GridBagConstraints constrains;
