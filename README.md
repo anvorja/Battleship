@@ -32,7 +32,7 @@
 <table>
  <tr>
    <td align="center">
-     <a href="[mailto:borja.carlos@correounivalle.edu.c](https://github.com/anvorja">
+     <a href="https://github.com/anvorja">
        anvorja
      </a>
    </td>
