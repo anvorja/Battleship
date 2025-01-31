@@ -33,12 +33,12 @@
  <tr>
    <td align="center">
      <a href="mailto:borja.carlos@correounivalle.edu.co">
-       Carlos Andrés Borja
+       anvorja
      </a>
    </td>
    <td align="center">
      <a href="mailto:deisy.melo@correounivalle.edu.co">
-       Deisy Catalina Melo
+       Deisy05
      </a>
    </td>
  </tr>
